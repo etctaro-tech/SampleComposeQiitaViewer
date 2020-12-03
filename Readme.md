@@ -1,5 +1,5 @@
 # Jetpack Composeサンプル：Qiita Viewer
-Qiitaの記事「Jetpack Composeがalpha版になったので改めてQiitaビューアを作ってみた」で作成したサンプルコードです。
+[Qiitaの記事「Jetpack Composeがalpha版になったので改めてQiitaビューアを作ってみた」](https://qiita.com/etctaro/items/a17681019c747f5e8b12)で作成したサンプルコードです。
 
 ## 概要
 - QiitaAPIに通信を行い、その結果を画面にリスト表示するアプリです。
