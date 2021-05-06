@@ -1,6 +1,6 @@
-package com.example.samplecomposeqiitaviewer.mylibrary.nw
+package com.example.samplecomposeqiitaviewer.nw
 
-import com.example.samplecomposeqiitaviewer.mylibrary.entity.QiitaArticle
+import com.example.samplecomposeqiitaviewer.entity.QiitaArticle
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.json.*

@@ -27,8 +27,8 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.startActivity
-import com.example.samplecomposeqiitaviewer.mylibrary.entity.QiitaArticle
-import com.example.samplecomposeqiitaviewer.mylibrary.nw.QiitaApi
+import com.example.samplecomposeqiitaviewer.entity.QiitaArticle
+import com.example.samplecomposeqiitaviewer.nw.QiitaApi
 import com.example.samplecomposeqiitaviewer.ui.SampleComposeQiitaViewerTheme
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
