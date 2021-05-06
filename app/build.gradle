@@ -60,7 +60,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
 
     // forTest
-    androidTestImplementation("androidx.compose.ui:ui-test:$compose_version")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
 }
 
 android {
