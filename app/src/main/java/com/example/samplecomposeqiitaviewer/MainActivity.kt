@@ -6,11 +6,13 @@ import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.icons.Icons
@@ -20,14 +22,13 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.semantics.accessibilityLabel
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.startActivity
-import androidx.ui.tooling.preview.Preview
-import com.example.samplecomposeqiitaviewer.mylibrary.entity.QiitaArticle
-import com.example.samplecomposeqiitaviewer.mylibrary.nw.QiitaApi
+import com.example.samplecomposeqiitaviewer.entity.QiitaArticle
+import com.example.samplecomposeqiitaviewer.nw.QiitaApi
 import com.example.samplecomposeqiitaviewer.ui.SampleComposeQiitaViewerTheme
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -53,7 +54,7 @@ fun HomeScreen() {
 
     MaterialTheme {
         Scaffold(
-            bodyContent = {
+            content = {
                 QiitaItemList(items = qiitaArticles)
             },
             floatingActionButton = {
@@ -72,8 +73,8 @@ fun HomeScreen() {
                         }
                     },
                     text = { Text("reload") },
-                    icon = { Icon(asset = Icons.Filled.Refresh) },
-                    modifier = Modifier.semantics { accessibilityLabel = "Refresh Button" }
+                    icon = { Icon(imageVector = Icons.Filled.Refresh, contentDescription = null) },
+                    modifier = Modifier.semantics { contentDescription = "Refresh Button" }
                 )
             }
         )
@@ -85,14 +86,14 @@ fun HomeScreen() {
 fun PrevHomeScreen() {
     MaterialTheme {
         Scaffold(
-            bodyContent = {
+            content = {
                 QiitaItemList(items = listOf())
             },
             floatingActionButton = {
                 ExtendedFloatingActionButton(
                     onClick = {},
                     text = { Text("reload") },
-                    icon = { Icon(asset = Icons.Filled.Refresh) }
+                    icon = { Icon(imageVector = Icons.Filled.Refresh, contentDescription = null) }
                 )
             }
         )
@@ -109,7 +110,7 @@ fun DefaultPreview() {
 
 @Composable
 fun QiitaItem(title: String, url: String) {
-    val context: Context = ContextAmbient.current
+    val context: Context = LocalContext.current
 
     Row(Modifier.clickable(onClick = {
         val uri = Uri.parse(url)
@@ -125,9 +126,9 @@ fun QiitaItem(title: String, url: String) {
 
 @Composable
 fun QiitaItemList(items: List<QiitaArticle>) {
-    ScrollableColumn(
-        modifier = Modifier.semantics { accessibilityLabel = "Item List" }) {
-        for (item in items) {
+    LazyColumn(
+        modifier = Modifier.semantics { contentDescription = "Item List" }) {
+        items(items) { item ->
             QiitaItem(title = item.title, url = item.url)
             Divider(color = Color.Black)
         }

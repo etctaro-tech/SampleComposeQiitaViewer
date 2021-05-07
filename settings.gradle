@@ -1,3 +1,2 @@
 rootProject.name = "SampleComposeQiitaViewer"
 include ':app'
-include ':mylibrary'

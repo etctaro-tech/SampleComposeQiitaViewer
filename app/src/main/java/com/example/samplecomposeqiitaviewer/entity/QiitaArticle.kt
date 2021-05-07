@@ -1,4 +1,4 @@
-package com.example.samplecomposeqiitaviewer.mylibrary.entity
+package com.example.samplecomposeqiitaviewer.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
