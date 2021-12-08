@@ -124,7 +124,7 @@ private fun MyWebComposable(url: String) {
 @Preview
 @Composable
 fun PrevDetailScreen() {
-    DetailScreen(url = "http://google.co.jp/")
+    DetailScreen(url = "https://google.co.jp/")
 }
 
 @Preview(showBackground = true)
@@ -173,10 +173,10 @@ fun MyWebPrev() {
     val weburl = remember { mutableStateOf("")}
     Column {
         Row {
-            Button(onClick = { weburl.value = "http://google.co.jp/" }) {
+            Button(onClick = { weburl.value = "https://google.co.jp/" }) {
                Text("Url1")
             }
-            Button(onClick = { weburl.value = "http://yahoo.co.jp/" }) {
+            Button(onClick = { weburl.value = "https://yahoo.co.jp/" }) {
                 Text("Url2")
             }
         }
