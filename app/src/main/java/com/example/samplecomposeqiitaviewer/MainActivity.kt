@@ -27,6 +27,10 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.samplecomposeqiitaviewer.entity.QiitaArticle
 import com.example.samplecomposeqiitaviewer.nw.QiitaApi
 import com.example.samplecomposeqiitaviewer.ui.SampleComposeQiitaViewerTheme
@@ -52,6 +56,9 @@ fun HomeScreen() {
     val qiitaArticles = remember { mutableStateListOf<QiitaArticle>() }
     val selectedArticle = remember { mutableStateOf<QiitaArticle?>(null) }
 
+    val navController = rememberNavController()
+
+
     MaterialTheme {
         Scaffold(
 
@@ -74,11 +81,21 @@ fun HomeScreen() {
                             }
                         },
                         onItemSelected = {
-                            selectedArticle.value = it }
+//                            selectedArticle.value = it
+                            navController.navigate("detail?url=${it.url}")
+                        }
                     )
                 }
                 Box(modifier = Modifier.weight(1.0F)) {
-                    DetailScreen(url = selectedArticle.value?.url ?: "")
+                    NavHost(navController = navController, startDestination = "detail?url={url}",
+                        modifier = Modifier.fillMaxSize()
+                        ) {
+                        composable("detail?url={url}",
+                            arguments = listOf(navArgument("url") { defaultValue = "" })
+                            ) { DetailScreen(url = it.arguments?.getString("url") ?: "") }
+                        /*...*/
+                    }
+
                 }
             }
         }

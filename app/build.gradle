@@ -69,6 +69,8 @@ dependencies {
 
     // forTest
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
+
+    implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
 }
 
 android {
