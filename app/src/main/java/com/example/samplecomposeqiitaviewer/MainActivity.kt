@@ -81,7 +81,6 @@ fun HomeScreen() {
                             }
                         },
                         onItemSelected = {
-//                            selectedArticle.value = it
                             navController.navigate("detail?url=${it.url}")
                         }
                     )
@@ -93,7 +92,6 @@ fun HomeScreen() {
                         composable("detail?url={url}",
                             arguments = listOf(navArgument("url") { defaultValue = "" })
                             ) { DetailScreen(url = it.arguments?.getString("url") ?: "") }
-                        /*...*/
                     }
 
                 }
@@ -178,7 +176,7 @@ fun QiitaItemList(items: List<QiitaArticle>, onItemSelected: (QiitaArticle) -> U
 
 @Preview
 @Composable
-fun prevQiitaItem() {
+fun PrevQiitaItem() {
     QiitaItem("title1", "http://sample.co.jp/", modifier = Modifier)
 }
 
